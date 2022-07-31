@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Form, Label, Input, Button } from './PhonebookForm.styled';
+import PropTypes from "prop-types"
 
 export class PhonebookForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired
+  }
+
   state = {
     id: '',
     name: '',

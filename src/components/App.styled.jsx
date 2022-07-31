@@ -5,4 +5,5 @@ export const ContentContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     min-width: 350px;
+    min-height: 100%;
 `
