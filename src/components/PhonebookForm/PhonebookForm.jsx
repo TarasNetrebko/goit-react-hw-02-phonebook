@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 import { Form, Label, Input, Button } from './PhonebookForm.styled';
 import PropTypes from "prop-types"
 
@@ -9,23 +8,20 @@ export class PhonebookForm extends Component {
   }
 
   state = {
-    id: '',
     name: '',
     number: "",
   };
 
   handleChange = e => {
-    const { id } = this.state;
     const { name, value } = e.currentTarget;
     this.setState({
-      id: id !== '' ? id : nanoid(),
       [name]: value,
     });
   };
   addContact = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
-    this.setState({ id: '', name: '', number: "" });
+    this.setState({ name: '', number: "" });
   };
   render() {
     const { name, number } = this.state;

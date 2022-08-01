@@ -3,6 +3,7 @@ import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 import { PhonebookList } from "./PhonebookList/PhonebookList"
 import { ContentContainer } from "./App.styled"
 import {Filter} from "./Filter/Filter"
+import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
@@ -15,24 +16,29 @@ export class App extends Component {
     filter: "",
   };
 
-  formSubmitHandler = data => {
+  formSubmitHandler = ({name, number}) => {
+    const newContact = {
+      id: nanoid(),
+      name,
+      number,
+    }
     let isExisted = false;
     this.state.contacts.map(contact => {
-      contact.name === data.name && (isExisted = true);
+      contact.name === name && (isExisted = true);
       return contact;
     })
-    isExisted ? alert(`${data.name} is already is contacts`) : this.setState(({contacts}) => ({
-      contacts: [data, ...contacts]
+    isExisted ? alert(`${name} is already is contacts`) : this.setState(({contacts}) => ({
+      contacts: [newContact, ...contacts]
     }))
   }
 
   changeFilter = (e) => {
     this.setState({filter: e.currentTarget.value})
   }
-  deleteContact = (e) => {
-    const contactsAfterDelete = this.state.contacts.filter(contact => contact.name !== e.currentTarget.id);
+  deleteContact = (id) => {
+    const AfterDelete = this.state.contacts.filter(contact => contact.id !== id);
     this.setState(({contacts}) => ({
-      contacts: [...contactsAfterDelete]
+      contacts: [...AfterDelete],
     }))
   }
 

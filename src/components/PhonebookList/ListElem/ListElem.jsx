@@ -1,11 +1,12 @@
 import { ContactElement, Button } from "./ListElem.styled"
 import PropTypes from "prop-types"
 
-export const ListElem = ({ name, number, onDelete }) =>
-    <ContactElement>
+export const ListElem = ({contactId, name, number, onDelete }) => {
+    return(<ContactElement>
         <span>{name}: {number}</span>
-        <Button type="button" id={name} onClick={onDelete}>Delete</Button>
-    </ContactElement>
+        <Button type="button" id={name} onClick={() => onDelete(contactId)}>Delete</Button>
+    </ContactElement>)
+}
 
 ListElem.propTypes = {
     name: PropTypes.string.isRequired,

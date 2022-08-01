@@ -7,7 +7,7 @@ export const PhonebookList = ({ contacts, onDelete }) => {
     <List>
       {contacts.map(({ name, id, number }) => (
         <Li key={id}>
-          <ListElem name={name} number={number} onDelete={onDelete} />
+          <ListElem contactId={id} name={name} number={number} onDelete={onDelete} />
         </Li>
       ))}
     </List>
