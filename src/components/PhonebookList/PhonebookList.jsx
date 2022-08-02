@@ -1,5 +1,5 @@
 import { List, Li } from './PhonebookList.styled';
-import { ListElem } from './ListElem/ListElem';
+import { ListElem } from '../ListElem/ListElem';
 import PropTypes from 'prop-types';
 
 export const PhonebookList = ({ contacts, onDelete }) => {
